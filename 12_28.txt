@@ -1,0 +1,18 @@
+1.string转char*: strcpy(buf,str.c_str());
+2.int 转 string: std::to_string(number);
+3.编程规范：
+  （1）#define头文件的保护
+        #ifndef _<project>_<path>_<file>_H_
+        #define _<project>_<path>_<file>_H_
+        ...
+        #endif //_<project>_<path>_<file>_H_
+  （2）头文件的依赖
+         尽量减少.h文件中#include的数量
+         头文件中使用类File，但不需要File的声明，则头文件中只需要前置声明 class File；而不需要包含头文件#include"src/file.h"
+         在头文件中如何做到使用类Foo,而无需访问Foo的定义：
+             1）将数据成员类型声明为Foo *或Foo &
+             2）参数，返回值类型为Foo的函数只声明（但不定义实现）
+             3）静态数据成员的类型可以被声明为Foo，因为静态数据成员的定义在类定义之外。
+             如果你的类是Foo的子类，或者含有类型为Foo的非静态数据成员，则必须为之包含头文件。
+             .cc文件都需要类的定义部分，自然也就会包含若干头文件。
+
